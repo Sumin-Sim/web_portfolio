@@ -1,0 +1,571 @@
+/* default: pc 1440px~ */
+@media screen and (min-width: 1440px) {
+    article>div>div {
+        width: 90rem /* 1440px */
+    }
+}
+
+/* pc 1024px ~ 1439px */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    /* common article */
+    article>div {
+        height: 100%;
+    }
+    article>div>div {
+        width: 90%;
+        padding: 10rem 0 0 0 /* 160px 0 0 0 */;
+    }
+
+    /* header */
+    header>div {
+        width: 90%;
+    }
+
+    /* article#visual */
+    article#visual>div {
+        height: 100vh;
+    }
+    article#visual ul>li:nth-child(2)>span {
+        position: relative;
+        left: 0;
+    }
+    article#visual ul>li:nth-child(3)>span {
+        position: relative;
+        right: 0;
+    }
+
+    /* article#about */
+
+    /* article#about div.intro*/
+    article#about div.intro {
+        margin-bottom: 5rem /* 80px */; padding-top: 27.5rem /* 440px */;
+    }
+    article#about div.intro>img {
+        position: absolute;
+        top: 10rem /* 160px */; left: 0;
+    }
+    article#about div.intro>div>p:nth-child(1) {
+        position: absolute;
+        top: calc(10rem + 12.5rem - 4.5rem) /* 160px + 200px - 72px */ /* div's margin + img height / 2 - line-height */; right: 0;
+    }
+    article#about div.intro>div>p:nth-child(2) {
+        margin-right: 0;
+    }
+
+    /* article#skill */
+    article#skill ul>li {
+        width: 41.5rem /* 664px */;
+    }
+    article#skill ul>li:nth-child(2) {
+        margin-left: calc((100% - 41.5rem - 11.25rem) / 6 * 1) /* (100% - 664px - 180px) / 6 * 1 */;
+    }
+    article#skill ul>li:nth-child(3) {
+        margin-left: calc((100% - 41.5rem - 11.25rem) / 6 * 2) /* (100% - 664px - 180px) / 6 * 2 */;
+    }
+    article#skill ul>li:nth-child(4) {
+        margin-left: calc((100% - 41.5rem - 11.25rem) / 6 * 3) /* (100% - 664px - 180px) / 6 * 3 */;
+    }
+    article#skill ul>li:nth-child(5) {
+        margin-left: calc((100% - 41.5rem - 11.25rem) / 6 * 4) /* (100% - 664px - 180px) / 6 * 4 */;
+    }
+    article#skill ul>li:nth-child(6) {
+        margin-left: calc((100% - 41.5rem - 11.25rem) / 6 * 5) /* (100% - 664px - 180px) / 6 * 5 */;
+    }
+    article#skill ul>li:nth-child(7) {
+        margin-left: calc((100% - 41.5rem - 11.25rem) / 6 * 6) /* (100% - 664px - 180px) / 6 * 6 */;
+    }
+
+    /* article#work */
+
+    /* article#work div#gallery */
+    article#work div#gallery {
+        width: 100%;
+    }
+    article#work div#show {
+        width: calc(60vw + 0.25rem);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    article#work div#all {
+        width: calc((60vw + 0.25rem) * 2);
+        justify-content: flex-start;
+    }
+    article#work div#all>figure {
+        width: calc((60vw - 5vw) / 2); height: calc((100% - 20rem - 2.5rem) / 2) /* 100% - 320px - 40px) / 2 */ /* (default height - div padding - figure's margin-bottom) / 2 */;
+        margin-right: 5vw; margin-bottom: 2.5rem /* 40px */;
+    }
+    article#work div#all>figure:nth-child(even) {
+        margin-right: 0.25rem /* 4px */;
+    }
+    article#work div#all>figure:nth-child(n+4) {
+        margin-bottom: 0.25rem /* 4px */;
+    }
+    article#work div#gallery p.prev, article#work div#gallery p.next {
+        display: flex;
+    }
+
+    /* article#contact */
+    article#contact>div>div {
+        flex-direction: column; align-items: center;
+    }
+    article#contact div.contact_text {
+        align-items: center;
+        text-align: center;
+    }
+    article#contact div.contact_text>p:nth-child(3) {
+        width: 20rem /* 320px */;
+        margin-bottom: 2.5rem /* 40px */;
+    }
+}
+
+/* tablet 768px ~ 1023px */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* common article */
+    article>div {
+        height: 100%;
+    }
+    article>div>div {
+        width: 90%;
+        padding: 10rem 0 0 0 /* 160px 0 0 0 */;
+    }
+
+    /* header */
+    header>div {
+        width: 100%;
+        display: block;
+    }
+
+    /* header nav */
+    header nav {
+        width: 50vw; height: 100vh;
+        position: absolute;
+        top: 0; left: -50vw;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    header nav>ul {
+        width: 30vw;
+        margin: 30vh auto 0;
+        display: block;
+    }
+    header nav>ul>li {
+        margin: 0 0 2vh 0;
+        border-left: 0.25rem /* 4px */ #1143f0 solid;
+    }
+    header nav>ul>li>a {
+        width: 100%;
+        padding: 0 0 0 2rem /* 0 0 0 32px */;
+        box-sizing: border-box;
+        font-size: 1.5rem /* 24px */; color: #1143f0;
+        line-height: 3rem /* 48px */;
+    }
+    header nav>p.close {
+        display: flex;
+    }
+
+    /* header nav :hover */
+    header nav>ul>li:hover {
+    border-radius: 0;
+    }
+
+    /* article#visual */
+    article#visual>div {
+        height: 80vh;
+    }
+    article#visual ul>li:nth-child(2)>span {
+        position: relative;
+        left: 0;
+    }
+    article#visual ul>li:nth-child(3)>span {
+        position: relative;
+        right: 0;
+    }
+
+    /* article#about */
+
+    /* article#about div.intro*/
+    article#about div.intro {
+        margin-bottom: 5rem /* 80px */; padding-top: 27.5rem /* 440px */;
+    }
+    article#about div.intro>img {
+        position: absolute;
+        top: 10rem /* 160px */; left: 0;
+    }
+    article#about div.intro>div>p:nth-child(1) {
+        margin-bottom: 2.5rem /* 40px */;
+    }
+    article#about div.intro>div>p:nth-child(2) {
+        margin: 0;
+    }
+
+    /* article#about div.info*/
+    article#about div.info>ul {
+        flex-direction: column;
+    }
+    article#about div.info>ul>li {
+        margin-bottom: 2.5rem /* 40px */;
+    }
+    article#about div.info>ul>li:last-child {
+        margin-bottom: 0;
+    }
+
+    /* article#skill */
+    article#skill ul>li {
+        width: 24rem /* 384px */;
+    }
+    article#skill ul>li:nth-child(2) {
+        margin-left: calc((100% - 24rem - 11.25rem) / 6 * 1) /* (100% - 384px - 180px) / 6 * 1 */;
+    }
+    article#skill ul>li:nth-child(3) {
+        margin-left: calc((100% - 24rem - 11.25rem) / 6 * 2) /* (100% - 384px - 180px) / 6 * 2 */;
+    }
+    article#skill ul>li:nth-child(4) {
+        margin-left: calc((100% - 24rem - 11.25rem) / 6 * 3) /* (100% - 384px - 180px) / 6 * 3 */;
+    }
+    article#skill ul>li:nth-child(5) {
+        margin-left: calc((100% - 24rem - 11.25rem) / 6 * 4) /* (100% - 384px - 180px) / 6 * 4 */;
+    }
+    article#skill ul>li:nth-child(6) {
+        margin-left: calc((100% - 24rem - 11.25rem) / 6 * 5) /* (100% - 384px - 180px) / 6 * 5 */;
+    }
+    article#skill ul>li:nth-child(7) {
+        margin-left: calc((100% - 24rem - 11.25rem) / 6 * 6) /* (100% - 384px - 180px) / 6 * 6 */;
+    }
+
+    /* article#work */
+
+    /* article#work div#gallery */
+    article#work div#gallery {
+        width: 100%;
+    }
+    article#work div#show {
+        width: calc(60vw + 0.25rem);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    article#work div#all {
+        width: calc((60vw + 0.25rem) * 2);
+        justify-content: flex-start;
+    }
+    article#work div#all>figure {
+        width: calc((60vw - 5vw) / 2); height: calc((100% - 20rem - 2.5rem) / 2) /* 100% - 320px - 40px) / 2 */ /* (default height - div padding - figure's margin-bottom) / 2 */;
+        margin-right: 5vw; margin-bottom: 2.5rem /* 40px */;
+    }
+    article#work div#all>figure:nth-child(even) {
+        margin-right: 0.25rem /* 4px */;
+    }
+    article#work div#all>figure:nth-child(n+4) {
+        margin-bottom: 0.25rem /* 4px */;
+    }
+    article#work div#gallery p.prev, article#work div#gallery p.next {
+        display: flex;
+    }
+
+    /* article#work div#modal*/
+    article#work div#modal>section {
+        width: 90%;
+    }
+    article#work div#modal h4 {
+        width: 50%;
+        margin: 0;
+        position: absolute;
+        top: 2.5rem /* 40px */; left: 0;
+    }
+    article#work div#modal figure {
+        width: 100%;
+        margin: 4.5rem auto 2.5rem /* 72px auto 40px */;
+        position: relative;
+        top: 0; left: 0;
+    }
+    article#work div#modal figure>img {
+        width: 100%; max-height: 400px;
+        border-top-right-radius: 1.25rem /* 20px */;
+        border-bottom-left-radius: 0;
+    }
+    article#work div#modal figure>figcaption {
+        display: none;
+    }
+    article#work div#modal ul {
+        margin-left: 0;
+    }
+    article#work div#modal ul>li:nth-child(3) {
+        margin-left: 0;
+    }
+
+    /* article#contact */
+    article#contact>div>div {
+        flex-direction: column; align-items: center;
+    }
+    article#contact div.contact_text {
+        align-items: center;
+        text-align: center;
+    }
+    article#contact div.contact_text>p:nth-child(3) {
+        width: 20rem /* 320px */;
+        margin-bottom: 2.5rem /* 40px */;
+    }
+
+    /* article#contact form */
+    article#contact form {
+        width: 90%;
+    }
+    article#contact fieldset>ul>li>input, article#contact fieldset>ul>li>textarea {
+        width: 100%;
+    }
+    article#contact fieldset>p {
+        width: 100%;
+    }
+    article#contact fieldset>p>input {
+        width: 100%;
+    }
+}
+
+/* mobile ~767px */
+@media screen and (max-width: 767px) {
+    /* common article */
+    article>div {
+        height: 100%;
+    }
+    article>div>div {
+        width: 90%;
+        padding: 10rem 0 0 0 /* 160px 0 0 0 */;
+    }
+    article h3 {
+        font-size: 5rem /* 80px */;
+    }
+
+    /* header */
+    header>div {
+        width: 100%;
+        display: block;
+    }
+
+    /* header nav */
+    header nav {
+        width: 100%; height: 100vh;
+        position: absolute;
+        top: 0; left: -100%;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 0;
+    }
+    header nav>ul {
+        width: 30vw;
+        margin: 30vh auto 0;
+        display: block;
+    }
+    header nav>ul>li {
+        margin: 0 0 2vh 0;
+        background-color: #fff;
+    }
+    header nav>ul>li>a {
+        width: 100%;
+        padding: 0;
+        font-size: 1.5rem /* 24px */; color: #1143f0;
+        text-align: center; line-height: 3rem /* 48px */;
+    }
+    header nav>p.close {
+        display: flex;
+    }
+
+    /* header nav :hover */
+    header nav>ul>li:hover {
+    border-radius: 0;
+    }
+
+     /* article#visual */
+    article#visual>div {
+        height: 80vh;
+    }
+    article#visual ul>li {
+        padding: 1.5rem 3rem /* 24px 48px */;
+        font-size: 3rem /* 48px */;
+        line-height: 4rem /* 64px */;
+    }
+    article#visual ul>li:nth-child(2)>span {
+        position: relative;
+        left: 0;
+    }
+    article#visual ul>li:nth-child(3)>span {
+        position: relative;
+        right: 0;
+    }
+
+    /* article#about */
+    article#about div.intro {
+        margin-bottom: 5rem /* 80px */; padding-top: calc(60vw + 2.5rem) /* 60vw + 40px */;
+    }
+    article#about div.intro>img {
+        width: 60vw; height: 60vw;
+        position: absolute;
+        top: 7.5rem /* 120px */; left: calc(50% - 30vw);
+    }
+    article#about div.intro>div>p:nth-child(1) {
+        margin-bottom: 2.5rem /* 40px */;
+    }
+    article#about div.intro>div>p:nth-child(2) {
+        margin: 0;
+    }
+
+    /* article#about div.info*/
+    article#about div.info>ul {
+        flex-direction: column;
+    }
+    article#about div.info>ul>li {
+        margin-bottom: 2.5rem /* 40px */;
+    }
+    article#about div.info>ul>li:last-child {
+        margin-bottom: 0;
+    }
+    article#about div.intro>div>p:nth-child(1) {
+        font-size: 3.5rem /* 56px */;
+    }
+
+    /* article#about div.info*/
+    article#about div.info>ul>li>dfn {
+        font-size: 1.5rem /* 24px */;
+    }
+
+    /* article#skill */
+    article#skill ul {
+        flex-direction: row; justify-content: center;
+    }
+    article#skill ul>li {
+        width: 35vw; height: 35vw;
+        margin-bottom: 2.5rem /* 40px */; padding-left: 0;
+        box-sizing: border-box;
+        border: 0.125rem /* 2px */ #fff solid;;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    article#skill ul>li:nth-child(2), article#skill ul>li:nth-child(3), article#skill ul>li:nth-child(4), article#skill ul>li:nth-child(5), article#skill ul>li:nth-child(6), article#skill ul>li:nth-child(7) {
+        margin-left: 0;
+    }
+    article#skill ul>li:nth-child(odd) {
+        margin-right: calc(90% - 70vw);
+    } 
+    article#skill ul>li:last-child {
+        margin: 0;
+    }
+    article#skill ul>li>dfn {
+        display: none;
+    }
+    article#skill ul>li>p {
+        width: 10vw; height: 10vw;
+        margin-right: 0;
+        position: absolute;
+        top: 30%; left: calc(50% - 5vw);
+        font-size: 10vw;
+    }
+    article#skill ul>li>span {
+        width: 100%;
+        position: absolute;
+        top: 65%; left: 0;
+        background-color: transparent;
+        color: #fff;
+        text-align: center; text-indent: 0; line-height: 1;
+    }
+    article#skill ul>li:nth-child(1)>span, article#skill ul>li:nth-child(2)>span, article#skill ul>li:nth-child(3)>span, article#skill ul>li:nth-child(4)>span, article#skill ul>li:nth-child(5)>span, article#skill ul>li:nth-child(6)>span, article#skill ul>li:nth-child(7)>span {
+        background-image: none;
+    }
+
+    /* article#work */
+    article#work>div>div>ul {
+        width: 75%;
+        margin: 0 auto 2.5rem /* 40px */;
+        justify-content: space-between;
+        position: relative;
+        top: 0; right: 0;
+    }
+    article#work>div>div>ul>li {
+        margin-left: 0;
+    }
+
+    /* article#work div#gallery */
+    article#work div#show {
+        width: calc(60vw + 0.25rem);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    article#work div#all {
+        width: calc((60vw + 0.25rem) * 4);
+        justify-content: flex-start;
+    }
+    article#work div#all>figure {
+        width: 60vw; height: calc((100% - 20rem - 2.5rem) / 2) /* 100% - 320px - 40px) / 2 */ /* (default height - div padding - figure's margin-bottom) / 2 */;
+        margin-right: 0.25rem /* 4px */; margin-bottom: 2.5rem /* 40px */;
+    }
+    article#work div#all>figure:nth-child(n+4) {
+        margin-bottom: 0.25rem /* 4px */;
+    }
+    article#work div#gallery p.prev, article#work div#gallery p.next {
+        display: flex;
+    }
+
+    /* article#work div#modal*/
+    article#work div#modal>section {
+        width: 90%;
+    }
+    article#work div#modal h4 {
+        width: 50%;
+        margin: 0;
+        position: absolute;
+        top: 2.5rem /* 40px */; left: 0;
+    }
+    article#work div#modal figure {
+        width: 100%;
+        margin: 4.5rem auto 2.5rem /* 72px auto 40px */;
+        position: relative;
+        top: 0; left: 0;
+    }
+    article#work div#modal figure>img {
+        width: 100%; max-height: 400px;
+        border-top-right-radius: 1.25rem /* 20px */;
+        border-bottom-left-radius: 0;
+    }
+    article#work div#modal figure>figcaption {
+        display: none;
+    }
+    article#work div#modal ul {
+        margin-left: 0;
+    }
+    article#work div#modal ul>li:nth-child(3) {
+        margin-left: 0;
+    }
+
+    /* article#contact */
+    article#contact>div>div {
+        flex-direction: column; align-items: center;
+    }
+    article#contact div.contact_text {
+        align-items: center;
+        text-align: center;
+    }
+    article#contact div.contact_text>p:nth-child(3) {
+        width: 20rem /* 320px */;
+        margin-bottom: 2.5rem /* 40px */;
+    }
+    
+    /* article#contact form */
+    article#contact form {
+        width: 90%;
+    }
+    article#contact fieldset>ul>li:last-child {
+        display: block;
+    }
+    article#contact fieldset>ul>li:last-child>label {
+        margin-bottom: 0.75rem /* 12px */;
+        display: block;
+    }
+    article#contact fieldset>ul>li>input, article#contact fieldset>ul>li>textarea {
+        width: 100%;
+    }
+    article#contact fieldset>p {
+        width: 100%;
+    }
+    article#contact fieldset>p>input {
+        width: 100%;
+    }
+}

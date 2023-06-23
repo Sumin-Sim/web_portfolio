@@ -1,0 +1,46 @@
+/*
+font-family: 'Poiret One', cursive;
+font-family: 'Righteous', cursive;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Righteous&display=swap');
+
+/*
+font-family: 'PyeongChangPeace-Light', cursive;
+font-family: 'PyeongChangPeace-Bold', cursive;
+*/
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PyeongChangPeace-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/*
+font-family: 'Pretendard-ExtraLight', sans-serif; font-weight: 200;
+font-family: 'Pretendard-Regular', sans-serif; font-weight: 400;
+font-family: 'Pretendard-Bold', sans-serif; font-weight: 700;
+*/
+@font-face {
+    font-family: 'Pretendard-ExtraLight';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
