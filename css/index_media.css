@@ -84,18 +84,15 @@
     article#work div#show {
         width: calc(60vw + 0.25rem);
         margin: 0 auto;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
     article#work div#all {
-        width: calc((60vw + 0.25rem) * 2);
+        width: 124vw;
         justify-content: flex-start;
     }
     article#work div#all>figure {
-        width: calc((60vw - 5vw) / 2);
-        margin-right: 5vw; margin-bottom: 2.5rem /* 40px */;
-    }
-    article#work div#all>figure:nth-child(even) {
-        margin-right: 0.25rem /* 4px */;
+        width: 28vw;
+        margin-right: 4vw; margin-bottom: 2.5rem /* 40px */;
     }
     article#work div#all>figure:nth-child(n+4) {
         margin-bottom: 0.25rem /* 4px */;
@@ -239,6 +236,10 @@
     article#skill ul>li:nth-child(7) {
         margin-left: calc((100% - 24rem - 11.25rem) / 6 * 6) /* (100% - 384px - 180px) / 6 * 6 */;
     }
+    article#skill ul>li>p {
+        width: 3rem;
+        font-size: 3rem /* 48px */;
+    }
 
     /* article#work */
 
@@ -271,7 +272,7 @@
 
     /* article#work div#modal*/
     article#work div#modal>section {
-        width: 90%;
+        width: 90%; height: 80vh;
     }
     article#work div#modal h4 {
         width: 50%;
@@ -370,7 +371,6 @@
     }
     header nav>ul>li {
         margin: 0 0 2vh 0;
-        background-color: #fff;
     }
     header nav>ul>li>a {
         width: 100%;
@@ -448,9 +448,8 @@
         width: 35vw; height: 35vw;
         margin-bottom: 2.5rem /* 40px */; padding-left: 0;
         box-sizing: border-box;
-        border: 0.125rem /* 2px */ #fff solid;;
+        border: 0.125rem /* 2px */ #fff solid;
         border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.3);
     }
     article#skill ul>li:nth-child(2), article#skill ul>li:nth-child(3), article#skill ul>li:nth-child(4), article#skill ul>li:nth-child(5), article#skill ul>li:nth-child(6), article#skill ul>li:nth-child(7) {
         margin-left: 0;
@@ -470,17 +469,32 @@
         position: absolute;
         top: 30%; left: calc(50% - 5vw);
         font-size: 10vw;
+        z-index: 10;
     }
-    article#skill ul>li>span {
-        width: 100%;
+    article#skill ul>li>div {
+        width: 35vw; height: 35vw;
+        overflow: hidden;
         position: absolute;
-        top: 65%; left: 0;
+        top: -0.125rem; left: -0.125rem;
+        border-radius: 50%;
         background-color: transparent;
-        color: #fff;
-        text-align: center; text-indent: 0; line-height: 1;
+        transform: rotate(180deg);
     }
-    article#skill ul>li:nth-child(1)>span, article#skill ul>li:nth-child(2)>span, article#skill ul>li:nth-child(3)>span, article#skill ul>li:nth-child(4)>span, article#skill ul>li:nth-child(5)>span, article#skill ul>li:nth-child(6)>span, article#skill ul>li:nth-child(7)>span {
-        background-image: none;
+    article#skill ul>li>div>span:nth-of-type(1) {
+        width: 100%; height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        top: 0; left: 0;
+        border-radius: 0;
+    }
+    article#skill ul>li>div>span:nth-of-type(2) {
+        width: 100%; height: 100%;
+        position: absolute;
+        top: -64%; left: 0;
+        background-color: transparent;
+        color: #1143f0;
+        text-align: center; text-indent: 0; line-height: 1;
+        z-index: 10;
+        transform: rotate(180deg);
     }
 
     /* article#work */
@@ -518,7 +532,7 @@
 
     /* article#work div#modal*/
     article#work div#modal>section {
-        width: 90%;
+        width: 90%; height: 80vh;
     }
     article#work div#modal h4 {
         width: 50%;
