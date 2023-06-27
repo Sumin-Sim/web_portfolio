@@ -1,8 +1,9 @@
 import $ from "jquery";
 
+// to-do
 // section move 시 광클릭 해결
 // visual slider
-// modal 완성
+// work filter 보류 - 포트폴리오 미정리
 
 
 $(function() {
@@ -23,7 +24,7 @@ $(function() {
         visualSlider();
         skillBar();
         workBtn();
-        workGallery2();
+        workGallery();
         workModal();
 
         topBtn();
@@ -34,7 +35,7 @@ $(function() {
         visualSlider();
         skillBar();
         workBtn();
-        workGallery1();
+        workGallery();
         workModal();
 
         topBtn();
@@ -45,7 +46,7 @@ $(function() {
         visualSlider();
         skillCircle();
         workBtn();
-        workGallery1();
+        workGallery();
         workModal();
 
         topBtn();
@@ -60,7 +61,10 @@ $(window).on('resize',function() {
 
 // section move
 function secMove() {
+    // nav click
     $('header nav>ul>li>a').on('click',function() {
+        $('header nav>ul>li>a').removeClass('selected');
+        $(this).addClass('selected');
         const secSelected = $(this).attr('href');
         const secPosT = $(secSelected).offset().top;
         const headerH = $('header').innerHeight();
@@ -68,6 +72,48 @@ function secMove() {
 
         return false;
     });
+
+    // nav color change
+    $('header nav>ul>li:nth-child(1)>a').addClass('selected');
+
+    const headerH = $('header').innerHeight();
+    const homeH = $('#visual').innerHeight();
+    const aboutH = $('#about').innerHeight();
+    const skillH = $('#skill').innerHeight();
+    const workH = $('#work').innerHeight();
+
+    const aboutPosT = $('#about').offset().top;
+    const skillPosT = $('#skill').offset().top;
+    const workPosT = $('#work').offset().top;
+    const contactPosT = $('#contact').offset().top;
+
+    let scrollTimer;
+
+    document.addEventListener('scroll',function() {
+        if(scrollTimer) {
+            clearTimeout(scrollTimer);
+        }
+        scrollTimer = setTimeout(function() {
+            const scrollPosT = $(document).scrollTop();
+            
+            if (scrollPosT < (aboutPosT - (homeH / 3))) {
+                $('header nav>ul>li>a').removeClass('selected');
+                $('header nav>ul>li:nth-child(1)>a').addClass('selected');
+            } else if(scrollPosT < (skillPosT - (aboutH / 3))) {
+                $('header nav>ul>li>a').removeClass('selected');
+                $('header nav>ul>li:nth-child(2)>a').addClass('selected');
+            } else if(scrollPosT < (workPosT - (skillH / 3))) {
+                $('header nav>ul>li>a').removeClass('selected');
+                $('header nav>ul>li:nth-child(3)>a').addClass('selected');
+            } else if(scrollPosT < (contactPosT - (workH / 3))) {
+                $('header nav>ul>li>a').removeClass('selected');
+                $('header nav>ul>li:nth-child(4)>a').addClass('selected');
+            } else if(scrollPosT > (contactPosT - (workH / 3))) {
+                $('header nav>ul>li>a').removeClass('selected');
+                $('header nav>ul>li:nth-child(5)>a').addClass('selected');
+            } 
+        },100);
+    })
 }
 
 // nav menu aside
@@ -101,11 +147,21 @@ function navMenu() {
 }
 
 // visual slider
-function visualSlider() {}
+function visualSlider() {
+    setInterval(slide,4000)
+    function slide() {
+        $('#visual ul>li:last').fadeOut(1000, function() {
+            $(this).prependTo('#visual ul');
+            $('#visual ul>li:first').show();
+        });
+    }
+}
 
 // skill percent
 function skillBar() {
-    const skillSection = $('header nav>ul>li>a[href = "#skill"]');
+    const skillPosT = $('#skill').offset().top;
+    const aboutH = $('#about').innerHeight();
+
     const skillPs = $('article#skill ul>li:nth-child(1)>div>span:nth-of-type(1)');
     const skillAi = $('article#skill ul>li:nth-child(2)>div>span:nth-of-type(1)');
     const skillXd = $('article#skill ul>li:nth-child(3)>div>span:nth-of-type(1)');
@@ -123,32 +179,41 @@ function skillBar() {
     skillJs.css('width',$(skillJs).next('span').text());
     skillReact.css('width',$(skillReact).next('span').text());
     
-    skillSection.on('click',function() {
-        skillPs.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
-        skillAi.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
-        skillXd.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
-        skillHtml.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
-        skillCss.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
-        skillJs.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
-        skillReact.animate({width:'0'},0,function() {
-            $(this).animate({width:$(this).next('span').text()},2000);
-        });
+    let scrollTimer;
+
+    document.addEventListener('scroll',function() {
+        if(!scrollTimer) {
+            scrollTimer = setTimeout(function() {
+                scrollTimer = null;
+                const scrollPosT = $(document).scrollTop();
+
+                if(scrollPosT > skillPosT - (aboutH / 2)) {
+
+                    skillPs.css('width',0);
+                    skillAi.css('width',0);
+                    skillXd.css('width',0);
+                    skillHtml.css('width',0);
+                    skillCss.css('width',0);
+                    skillJs.css('width',0);
+                    skillReact.css('width',0);
+
+                    skillPs.animate({width:$(skillPs).next('span').text()},2000);
+                    skillAi.delay(200).animate({width:$(skillAi).next('span').text()},2000);
+                    skillXd.delay(400).animate({width:$(skillXd).next('span').text()},2000);
+                    skillHtml.delay(600).animate({width:$(skillHtml).next('span').text()},2000);
+                    skillCss.delay(800).animate({width:$(skillCss).next('span').text()},2000);
+                    skillJs.delay(1000).animate({width:$(skillJs).next('span').text()},2000);
+                    skillReact.delay(1200).animate({width:$(skillReact).next('span').text()},2000);
+                }
+            }, 2500);
+        }
     });
 }
+
 function skillCircle() {
-    const skillSection = $('header nav>ul>li>a[href = "#skill"]');
+    const skillPosT = $('#skill').offset().top;
+    const aboutH = $('#about').innerHeight();
+    
     const skillPs = $('article#skill ul>li:nth-child(1)>div>span:nth-of-type(1)');
     const skillAi = $('article#skill ul>li:nth-child(2)>div>span:nth-of-type(1)');
     const skillXd = $('article#skill ul>li:nth-child(3)>div>span:nth-of-type(1)');
@@ -166,28 +231,34 @@ function skillCircle() {
     skillJs.css('height',$(skillJs).next('span').text());
     skillReact.css('height',$(skillReact).next('span').text());
     
-    skillSection.on('click',function() {
-        skillPs.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
-        skillAi.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
-        skillXd.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
-        skillHtml.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
-        skillCss.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
-        skillJs.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
-        skillReact.animate({height:'0'},0,function() {
-            $(this).animate({height:$(this).next('span').text()},2000);
-        });
+    let scrollTimer;
+
+    document.addEventListener('scroll',function() {
+        if(!scrollTimer) {
+            scrollTimer = setTimeout(function() {
+                scrollTimer = null;
+                const scrollPosT = $(document).scrollTop();
+
+                if(scrollPosT > (skillPosT - aboutH / 4) && scrollPosT < (skillPosT + aboutH / 8)) {
+
+                    skillPs.css('height',0);
+                    skillAi.css('height',0);
+                    skillXd.css('height',0);
+                    skillHtml.css('height',0);
+                    skillCss.css('height',0);
+                    skillJs.css('height',0);
+                    skillReact.css('height',0);
+
+                    skillPs.animate({height:$(skillPs).next('span').text()},2000);
+                    skillAi.delay(200).animate({height:$(skillAi).next('span').text()},2000);
+                    skillXd.delay(400).animate({height:$(skillXd).next('span').text()},2000);
+                    skillHtml.delay(600).animate({height:$(skillHtml).next('span').text()},2000);
+                    skillCss.delay(800).animate({height:$(skillCss).next('span').text()},2000);
+                    skillJs.delay(1000).animate({height:$(skillJs).next('span').text()},2000);
+                    skillReact.delay(1200).animate({height:$(skillReact).next('span').text()},2000);
+                }
+            }, 3000);
+        }
     });
 }
 
@@ -208,12 +279,11 @@ function workBtn() {
 function workFilter() {}
 
 // work gallery
-function workGallery1() {
-}
-function workGallery2() {
+function workGallery() {
     let figureW = $('article#work div#all>figure').outerWidth(true);
     const workPrev = $('article#work div#gallery p.prev');
     const workNext = $('article#work div#gallery p.next');
+    const workBtn = $('article#work div#gallery p.prev, article#work div#gallery p.next')
     
     $('article#work div#all').css('margin-left','-' + figureW + 'px');
     $('article#work div#all figure:nth-child(4)').prependTo('article#work div#all');
@@ -221,10 +291,21 @@ function workGallery2() {
 
     // button slide
     $(workPrev).on('click',function() {
+        $(workBtn).hide();
+        $('article#work div#all').animate({marginLeft:'+=' + figureW + 'px'},function() {
+            $('article#work div#all figure:nth-child(4)').prependTo('article#work div#all');
+            $('article#work div#all figure:nth-child(8)').insertBefore('article#work div#all figure:nth-child(5)');
+            $('article#work div#all').css('margin-left','-' + figureW + 'px');
+            $(workBtn).show();
+        });
+    });
+    $(workNext).on('click',function() {
+        $(workBtn).hide();
         $('article#work div#all').animate({marginLeft:'-=' + figureW + 'px'},function() {
             $('article#work div#all figure:nth-child(1)').insertAfter('article#work div#all figure:nth-child(4)');
             $('article#work div#all figure:nth-child(5)').appendTo('article#work div#all');
             $('article#work div#all').css('margin-left','-' + figureW + 'px');
+            $(workBtn).show();
         });
     });
 }
@@ -233,6 +314,43 @@ function workGallery2() {
 function workModal() {
     const modal = $('article#work div#modal');
     modal.css('display','none');
+
+    function Modal(title,imgSrc,time,program,introduction,url) {
+        this.title = title,
+        this.imgSrc = imgSrc,
+        this.time = time,
+        this.program = program,
+        this.introduction = introduction,
+        this.url = url;
+    }
+
+    Modal.prototype.action = function() {
+        document.querySelector('#modal h4').innerHTML = this.title;
+        document.querySelector('#modal figure>img').setAttribute('src', this.imgSrc);
+        document.querySelector('#modal ul>li:nth-child(1)').innerHTML = this.time;
+        document.querySelector('#modal ul>li:nth-child(2)').innerHTML = this.program;
+        document.querySelector('#modal ul>li:nth-child(3)').innerHTML = this.introduction;
+        document.querySelector('#modal ul>li:nth-child(4)>a').setAttribute('href', this.url);
+    }
+
+    let modalContent = [
+        new Modal('포트폴리오 01','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 02','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 03','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 04','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 05','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 06','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 07','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com'),
+        new Modal('포트폴리오 08','./img/work_ex.png','23.06.27~23.06.27','HTML5, CSS, JQuery, JavaScript','포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요. 포트폴리오 설명을 적으세요.','http://www.naver.com')
+    ]
+
+    const portfolio = document.querySelectorAll('#gallery figure');
+    portfolio.forEach(function(item, index) {
+        item.addEventListener('click', function() {
+            document.querySelector('#modal').style.display = 'flex';
+            modalContent[index].action();
+        });
+    });
 
     // close button
     const modalCloseBtn = $('article#work div#modal p.close');
@@ -245,5 +363,7 @@ function workModal() {
 function topBtn() {
     $('aside#top>p').on('click',function() {
         $('html,body').animate({scrollTop: 0},1000);
+
+        return false;
     });
 }
